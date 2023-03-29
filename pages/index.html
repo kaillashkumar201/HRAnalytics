@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HR Analytics</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+      * {
+        font-size: 20px;
+        font-family: Roboto, sans-serif;
+      }
+      .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .app-title {
+        font-size: 30px;
+        padding: 20px;
+        font-weight: bold;
+      }
+      .section-element {
+        margin: 20px;
+        padding-left: 100px;
+        padding-bottom: 30px;
+        padding-right: 100px;
+        padding-top: 30px;
+        border: 3px dotted grey;
+        font-size: 20px;
+      }
+      .section-element-title {
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+      .section-title {
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 75%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="app-title">
+        HR Analytics using Python3, Pandas, Numpy and other Frameworks
+      </div>
+      <div class="section">
+        <div class="section-title">Univariate Analytics</div>
+        <div class="section-element">
+          <div class="section-element-title">
+            Analysing the frequency of a given attribute
+          </div>
+          <div class="section-element-content">
+            <ul class="unordered-list">
+              {% for k, v in univariate['gender'].items() %}
+              <li>{{ k }} : {{ v }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="section-element">
+          <div class="section-element-title">
+            Obtaining the mean, median, mode, standard deviation, variance and
+            skewness of a given attribute(training_hours)
+          </div>
+          <div class="section-element-content">
+            <ul class="unordered-list">
+              {% for k, v in univariate['training_hours'].items() %}
+              <li>{{ k }} : {{ v }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="section-element">
+          <div class="section-element-title">
+            Visualizing an Attribute (Gender)
+          </div>
+          <div class="section-element-content">
+            <img
+              src="{{ images[0] }}"
+              alt="Univariate analysis: Pie chart of gender attribute"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-title">Bivariate Analytics</div>
+        <div class="section-element">
+          <div class="section-element-title">
+            Pearson Correlation Coefficient between various attributed in the
+            dataset
+          </div>
+          <div class="section-element-content">
+            {{ bivariate['pearson'] | safe }}
+          </div>
+        </div>
+        <div class="section-element">
+          <div class="section-element-title">
+            Cross Table (Gender, Major Discipline)
+          </div>
+          <div class="section-element-content">
+            {{ bivariate['cross_table'] | safe }}
+          </div>
+        </div>
+        <div class="section-element">
+          <div class="section-element-title">
+            Bar plot (Experience, Training Hours)
+          </div>
+          <div class="section-element-content">
+            <img
+              src="{{ images[1] }}"
+              alt="Bar plot (Experience, Training Hours)"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-title">Multivariate Analytics</div>
+        <div class="section-element">
+          <div class="section-element-title">
+            Scatterplot (City Development Index, Training Hours, Employability)
+          </div>
+          <div class="section-element-content">
+            <img
+              src="{{ images[2] }}"
+              alt="
+                    Scatterplot (City Development Index, Training Hours, Employability)"
+            />
+          </div>
+        </div>
+        <div class="section-element">
+          <div class="section-element-title">Heat Map</div>
+          <div class="section-element-content">
+            <img src="{{ images[3] }}" alt="Heatmap" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
